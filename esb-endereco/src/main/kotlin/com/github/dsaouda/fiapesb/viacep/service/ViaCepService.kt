@@ -8,7 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 
-open interface ViaCepService {
+interface ViaCepService {
     @GET("/ws/{codigo}/json/")
     fun getEndereco(@Path("codigo") codigo: String): Call<Endereco>
 

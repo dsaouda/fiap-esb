@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 
 @SpringBootApplication
-open class Application {
+open class App {
 
     @Bean
     open fun mappingJackson2HttpMessageConverter(): MappingJackson2HttpMessageConverter {
@@ -22,5 +22,5 @@ open class Application {
 
 
 fun main(args: Array<String>) {
-    SpringApplication.run(Application::class.java, *args)
+    SpringApplication.run(App::class.java, *args)
 }
