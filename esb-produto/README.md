@@ -1,0 +1,1 @@
+my-first-app-1.0/bin/my-first-app -Dplay.http.secret.key=abcdefghijk
