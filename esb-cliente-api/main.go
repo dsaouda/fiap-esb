@@ -1,20 +1,23 @@
 package main
 
 //https://thenewstack.io/make-a-restful-json-api-go/
+//https://github.com/Coderockr/APIVagaFrontend/blob/master/server/server.go
 
 import (
 	"fmt"
-	"github.com/gorilla/mux"
+	"flag"
 	"net/http"
+	"github.com/dsaouda/fiap-esb/esb-cliente-api/routers"
 )
 
 func main() {
-	//https://github.com/Coderockr/APIVagaFrontend/blob/master/server/server.go
-	fmt.Println("Iniciado")
-	r := mux.NewRouter()
+	port := flag.Int("port", 9001, "número da porta que deseja usar")
+	host := flag.String("host", "localhost", "host")
+	listen := fmt.Sprintf("%s:%d", *host, *port)
 
-	ClienteHandler{r}.InitRouter()
 
-	http.ListenAndServe("localhost:8000", r)
+	r := routers.Router()
+	fmt.Printf("listening for HTTP on %s", listen)
+	http.ListenAndServe(listen, r)
 
 }
