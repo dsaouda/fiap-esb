@@ -29,4 +29,4 @@ https://www.playframework.com/documentation/2.6.x/HTTPServer
 
 # usando
 
-http://localhost:9000/v1/produto/124794092
+acesse http://localhost:9000/v1/produto/124794092
