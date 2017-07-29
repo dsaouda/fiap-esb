@@ -11,10 +11,10 @@ import (
 )
 
 func main() {
-	port := flag.Int("port", 9001, "número da porta que deseja usar")
+	port := flag.Int("port", 9001, "porta")
 	host := flag.String("host", "localhost", "host")
+	flag.Parse()
 	listen := fmt.Sprintf("%s:%d", *host, *port)
-
 
 	r := routers.Router()
 	fmt.Printf("listening for HTTP on %s", listen)
