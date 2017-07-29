@@ -4,18 +4,18 @@ projeto que simula um sistema de produtos de uma loja. Esse projeto usa a api da
 
 # projeto
 
-O projeto foi feito utilizando a linguagem de programa??o scala (https://www.scala-lang.org/).
-Para executar o projeto ? preciso baixar o sbt (http://www.scala-sbt.org/) e configur?-lo em sua vari?vel de ambiente de seu sistema operacional.
+O projeto foi feito utilizando a linguagem de programação scala (https://www.scala-lang.org/).
+Para executar o projeto é preciso baixar o sbt (http://www.scala-sbt.org/) e configurá-lo na variável de ambiente de seu sistema operacional.
 
 # executar o projeto
 
 `sbt`
 
-O modo interativo ser? iniciado. Dentro do modo interativo basta digitar `run`
+O modo interativo será iniciado. Dentro do modo interativo basta digitar `run`
 
-# compilar para produ??o
+# compilar para produção
 
-No modo interativo (`sbt`), digite `dist`. Um arquivo ser? criado em target\universal\<project-name>.zip
+No modo interativo (`sbt`), digite `dist`. Um arquivo será criado em target\universal\<project-name>.zip
 
 https://www.playframework.com/documentation/2.6.x/Deploying
 
