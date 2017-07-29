@@ -1,6 +1,6 @@
 package service
 
-import model.Produto
+import model.{Produto}
 import org.jsoup.Connection.Method
 import org.jsoup.Jsoup
 import play.api.libs.json.{JsUndefined, JsValue, Json}
