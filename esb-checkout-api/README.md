@@ -9,21 +9,25 @@ O projeto foi feito usando groovy (http://groovy-lang.org/) com o framework grai
 # executar
 
 `grailsw`
+
 `grails> run-app`
 
 # parando o projeto
 
 `grailsw`
+
 `grails> stop-app`
 
 # help
 
 `grailsw`
+
 `grails> help`
 
 # compilar para produção
 
 `grailsw`
+
 `grails> package`
 
 # executando
