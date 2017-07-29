@@ -6,4 +6,4 @@ Projeto ESB (Fluxo simples de um ecommerce)
 - [x] esb-cliente-api	=> https://github.com/dsaouda/fiap-esb/tree/master/esb-cliente-api
 - [x] esb-produto-api 	=> https://github.com/dsaouda/fiap-esb/tree/master/esb-produto-api
 - [x] esb-login-api		=> https://github.com/dsaouda/fiap-esb/tree/master/esb-login-api
-- [ ] esb-checkout-api	=> ...
+- [x] esb-checkout-api	=> https://github.com/dsaouda/fiap-esb/tree/master/esb-checkout-api
