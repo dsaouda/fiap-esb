@@ -12,6 +12,6 @@ Esse projeto foi feito utilizando kotlin (https://kotlinlang.org/) com framework
 
 `java -jar -Dserver.port=8081 esb-endereco-1.0.0.jar`
 
-# acessando o projeto
+# usando
 
-em um navegador acesse http://localhost:8081/v1/cep?codigo=01538001 aonde o parâmetro código deve receber o CEP
+acesse http://localhost:8081/v1/cep?codigo=01538001
