@@ -13,6 +13,7 @@ O projeto foi feito usando groovy (http://groovy-lang.org/) com o framework grai
 # testando o projeto e desenvolver
 
 grails> `run-app`
+
 a aplicação firá disponível no endereço http://localhost:8080
 
 # parando o projeto
