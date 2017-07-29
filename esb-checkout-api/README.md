@@ -6,29 +6,28 @@ Projeto simula um processo de checkout de um ecommerce. Ao final do processament
 
 O projeto foi feito usando groovy (http://groovy-lang.org/) com o framework grails (https://grails.org/). Para geração do boleto foi utilizado o projeto stella-boleto (https://github.com/caelum/caelum-stella/wiki/Gerando-boleto).
 
-# executar
+# acessando o grails
 
 `grailsw`
 
+# testando o projeto e desenvolver
+
 grails> `run-app`
+a aplicação firá disponível no endereço http://localhost:8080
 
 # parando o projeto
 
-`grailsw`
-
 grails> `stop-app`
 
-# help
-
-`grailsw`
+# visualizar todos os comandos
 
 grails> `help`
 
 # compilar para produção
 
-`grailsw`
-
 grails> `package`
+
+o pacote será gerado em build/libs/<project-name>.war
 
 # executando
 
