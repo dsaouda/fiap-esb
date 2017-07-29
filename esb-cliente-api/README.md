@@ -18,4 +18,10 @@ Esse projeto foi feito utilizando golang (https://golang.org/) com o pacote http
 
 # rodar projeto compilado
 
-`./esb-cliente-api -host localhost -port 9002`
+`./esb-cliente-api -host localhost -port 9001`
+
+# usando
+
+POST `curl -X POST -d '{"nome":"Cliente", "cpf":"123"}' http://localhost:9001/v1/cliente`
+
+GET  http://localhost:9001/v1/cliente
