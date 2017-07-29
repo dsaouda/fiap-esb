@@ -1,6 +1,8 @@
 # esb-login-api
 
-projeto simula um serviço de autenticação
+O projeto simula um serviço de autenticação.
+
+Esse projeto foi feito utilizando golang (https://golang.org/) com o web framework gin (https://gin-gonic.github.io/gin/)
 
 # baixar dependências
 
