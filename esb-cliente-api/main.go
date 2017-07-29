@@ -1,8 +1,5 @@
 package main
 
-//https://thenewstack.io/make-a-restful-json-api-go/
-//https://github.com/Coderockr/APIVagaFrontend/blob/master/server/server.go
-
 import (
 	"fmt"
 	"flag"
