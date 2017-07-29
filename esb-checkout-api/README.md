@@ -34,6 +34,6 @@ o pacote será gerado em build/libs/<project-name>.war
 
 `java -Dgrails.env=prod -jar build/libs/<project-name>.war`
 
-# exemplo de utilização
+# usando
 
 `curl -X POST -d "valor=10.00&cliente_nome=Cliente&cliente_documento=123&endereco_logradouro=Av. Teste&endereco_bairro=Bairro&endereco_cep=12345678&endereco_cidade=Sao Paulo&endereco_uf=UF" http://localhost:8080/v1/checkout`
