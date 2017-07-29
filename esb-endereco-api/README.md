@@ -2,7 +2,7 @@
 
 O projeto representa uma aplicação de endereço/cep. Esse projeto utiliza a api do ViaCEP (https://viacep.com.br/)
 
-Esse projeto foi feito utilizando kotlin (https://kotlinlang.org/) com framework spring-boot (https://projects.spring.io/spring-boot/). Para requisições http foi utilizado o retrofit (http://square.github.io/retrofit/)
+Esse projeto foi feito utilizando kotlin (https://kotlinlang.org/) com framework spring-boot (https://projects.spring.io/spring-boot/) e como http client foi utilizado o retrofit (http://square.github.io/retrofit/).
 
 # compilar o projeto
 
