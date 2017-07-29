@@ -22,6 +22,6 @@ Esse projeto foi feito utilizando golang (https://golang.org/) com o pacote http
 
 # usando
 
-POST `curl -X POST -d '{"nome":"Cliente", "cpf":"123"}' http://localhost:9001/v1/cliente`
+POST => `curl -X POST -d '{"nome":"Cliente", "cpf":"123"}' http://localhost:9001/v1/cliente`
 
-GET  http://localhost:9001/v1/cliente
+GET  => http://localhost:9001/v1/cliente
