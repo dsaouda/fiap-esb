@@ -10,25 +10,25 @@ O projeto foi feito usando groovy (http://groovy-lang.org/) com o framework grai
 
 `grailsw`
 
-`grails> run-app`
+grails> `run-app`
 
 # parando o projeto
 
 `grailsw`
 
-`grails> stop-app`
+grails> `stop-app`
 
 # help
 
 `grailsw`
 
-`grails> help`
+grails> `help`
 
 # compilar para produção
 
 `grailsw`
 
-`grails> package`
+grails> `package`
 
 # executando
 
@@ -36,4 +36,4 @@ O projeto foi feito usando groovy (http://groovy-lang.org/) com o framework grai
 
 # exemplo de utilização
 
-curl -X POST -d "valor=10.00&cliente_nome=Cliente&cliente_documento=123&endereco_logradouro=Av. Teste&endereco_bairro=Bairro&endereco_cep=12345678&endereco_cidade=Sao Paulo&endereco_uf=UF" http://localhost:8080/v1/checkout
+`curl -X POST -d "valor=10.00&cliente_nome=Cliente&cliente_documento=123&endereco_logradouro=Av. Teste&endereco_bairro=Bairro&endereco_cep=12345678&endereco_cidade=Sao Paulo&endereco_uf=UF" http://localhost:8080/v1/checkout`
