@@ -17,6 +17,7 @@ class CheckoutController {
     static allowedMethods = [index:'POST', boleto: 'GET']
 
     def index() {
+
         def nomeBoleto = "boleto-" + System.currentTimeMillis() + ".png"
 
         Datas data = dataBoleto()
@@ -29,7 +30,10 @@ class CheckoutController {
         def gerador = new GeradorDeBoleto(boleto);
         gerador.geraPNG(nomeBoleto)
 
-        render """[{"visualizar-boleto": "/checkout/boleto?f=$nomeBoleto"}]"""
+        render """[{
+            "status": "Compra efetuada com sucesso. Agora so falta pagar o boleto",
+            "visualizar-boleto": "$grailsLinkGenerator.serverBaseURL/v1/checkout/boleto?f=$nomeBoleto"
+        }]"""
 
     }
 
@@ -59,9 +63,9 @@ class CheckoutController {
                 .comDatas(data)
                 .comBeneficiario(beneficiario)
                 .comPagador(pagador)
-                .comValorBoleto("200.00")
+                .comValorBoleto(params.valor)
                 .comNumeroDoDocumento("1234")
-                .comInstrucoes("instrucao 1", "instrucao 2", "instrucao 3", "instrucao 4", "instrucao 5")
+                .comInstrucoes("nao pague esse boleto", "ele faz parte de um projeto maior que simula um ESB")
                 .comLocaisDePagamento("local 1", "local 2")
         boleto
     }
