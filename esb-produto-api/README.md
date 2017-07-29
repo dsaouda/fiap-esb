@@ -26,3 +26,7 @@ extrair o arquivo zip gerado e executar o comando:
 `path/to/bin/<project-name> -Dplay.http.secret.key=abcdefghijk`
 
 https://www.playframework.com/documentation/2.6.x/HTTPServer
+
+# usando
+
+http://localhost:9000/v1/produto/124794092
