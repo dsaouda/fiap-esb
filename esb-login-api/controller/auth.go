@@ -11,13 +11,14 @@ func PostAuth(c *gin.Context) {
 	c.BindJSON(&auth)
 
 	login, error := database.Get(auth.Login)
+
 	if error != nil {
 		c.JSON(401, "Unauthorized")
 		return
 	}
 
 	if login.Senha == auth.Senha {
-		c.JSON(200, "OK")
+		c.JSON(200, login)
 		return
 	}
 

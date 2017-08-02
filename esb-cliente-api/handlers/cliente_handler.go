@@ -6,12 +6,8 @@ import (
 	"encoding/json"
 	"regexp"
 	"github.com/satori/go.uuid"
+	"github.com/gorilla/mux"
 )
-
-type ResponseError struct {
-	Code int
-	Message string
-}
 
 type Cliente struct {
 	Uuid uuid.UUID `json:"uuid"`
@@ -53,3 +49,13 @@ func (c ClienteHandler) Store(w http.ResponseWriter, r *http.Request) {
 	save(cliente)
 	json.NewEncoder(w).Encode(cliente)
 }
+
+func (c ClienteHandler) Get(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	cpf := vars["cpf"]
+	json.NewEncoder(w).Encode(store[cpf])
+}
+
+
+
+
