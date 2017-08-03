@@ -4,6 +4,8 @@ Esse projeto tem como objetivo juntar todos os serviços do ecommerce em um úni
 
 # projeto
 
-O projeto foi desenvolvido utilizando mule (AnypointStudio)
+O projeto foi desenvolvido utilizando mule (AnypointStudio 6.2.5)
 
+# download
 
+O download da ferramenta pode ser feita no site oficial https://www.mulesoft.com/platform/studio
