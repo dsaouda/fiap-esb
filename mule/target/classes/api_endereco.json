@@ -1,0 +1,21 @@
+{
+    "title": "Endereco",
+    "type": "object",
+    "properties": {
+        "cep": {
+            "type": "string"
+        },
+        "logradouro": {
+            "type": "string"
+        },
+        "bairro": {            
+            "type": "string"
+        },
+        "localidade": {            
+            "type": "string"
+        },
+        "uf": {
+        	"type": "string"
+        }
+    }    
+}

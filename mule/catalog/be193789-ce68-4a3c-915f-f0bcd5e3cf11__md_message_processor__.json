@@ -1,0 +1,11 @@
+{
+    "inputMessageMetadata": {},
+    "outputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "resource-login"
+        }
+    },
+    "id": "be193789-ce68-4a3c-915f-f0bcd5e3cf11",
+    "version": "5.2.0.0"
+}

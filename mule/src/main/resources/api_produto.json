@@ -1,0 +1,21 @@
+{
+    "title": "Produto",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "number"
+        },
+        "nome": {
+            "type": "string"
+        },
+        "descricao": {            
+            "type": "string"
+        },
+        "foto": {            
+            "type": "string"
+        },
+        "valor": {            
+            "type": "number"
+        }        
+    }    
+}

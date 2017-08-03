@@ -1,0 +1,15 @@
+{
+    "title": "Cliente",
+    "type": "object",
+    "properties": {
+        "uuid": {
+            "type": "string"
+        },
+        "nome": {
+            "type": "string"
+        },
+        "cpf": {            
+            "type": "string"
+        }
+    }    
+}

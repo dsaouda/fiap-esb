@@ -1,0 +1,21 @@
+{
+    "title": "Login",
+    "type": "object",
+    "properties": {
+        "uuid": {
+            "type": "string"
+        },
+        "cliente_uuid": {
+            "type": "string"
+        },
+        "cliente_cpf": {            
+            "type": "string"
+        },
+        "login": {            
+            "type": "string"
+        },
+        "senha": {            
+            "type": "string"
+        }        
+    }    
+}
