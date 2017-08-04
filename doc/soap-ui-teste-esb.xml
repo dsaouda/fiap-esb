@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:chec="http://localhost:8081/checkout" xmlns:mod="http://model.fiapesb.dsaouda.github.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <chec:comprar>
+         
+         <chec:arg0>
+            
+            <mod:cliente>
+               <mod:login>jose@fiap.com.br</mod:login>
+               
+               <mod:senha>fiap123</mod:senha>
+            </mod:cliente>
+            
+            <mod:endereco>
+               <mod:cep>07181100</mod:cep>
+               
+            </mod:endereco>
+            
+            <mod:produto>
+            
+               <mod:id>124196121</mod:id>
+               
+            </mod:produto>
+            
+         </chec:arg0>
+      </chec:comprar>
+   </soapenv:Body>
+</soapenv:Envelope>
