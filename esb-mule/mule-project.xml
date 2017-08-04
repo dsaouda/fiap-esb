@@ -2,4 +2,6 @@
 <mule-project xmlns="http://www.mulesoft.com/tooling/project" runtimeId="org.mule.tooling.server.3.8.4.ee" schemaVersion="5.3.0.0">
     <name>ws</name>
     <description></description>
+    <muleExtension name="Amazon S3" qualifier="org.mule.tooling.ui.contribution.s3.3.5.0"/>
+    <muleExtension name="APIkit SOAP" qualifier="org.mule.tooling.soapkit.contribution"/>
 </mule-project>

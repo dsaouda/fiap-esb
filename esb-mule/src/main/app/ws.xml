@@ -24,6 +24,11 @@ http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/
             </http:response-builder>
         </http:listener>
         <cxf:simple-service configuration-ref="CXF_Configuration" serviceClass="com.github.dsaouda.fiapesb.ws.EnderecoService" doc:name="CXF"/>
+        <flow-ref name="sub_flow_endereco_api" doc:name="sub_flow_endereco_api"/>
+    </flow>
+    
+    
+    <sub-flow name="sub_flow_endereco_api">
         <http:request config-ref="http_endereco_service_api" path="/v1/cep" method="GET" parseResponse="false" doc:name="rest endereco api">
             <http:request-builder>
                 <http:query-param paramName="codigo" value="#[payload]"/>
@@ -44,7 +49,8 @@ http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/
 	class : "com.github.dsaouda.fiapesb.model.Endereco"
 }]]></dw:set-payload>
         </dw:transform-message>
-    </flow>
+        <logger message="#[payload]" level="INFO" doc:name="imprimir objeto endereco"/>
+    </sub-flow>
     
     <flow name="flow_cadastro_cliente">
         <http:listener config-ref="soa_esb" path="/cliente" allowedMethods="GET,POST" doc:name="SOAP"/>
@@ -120,6 +126,7 @@ http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/
         </dw:transform-message>
         <logger message="#[payload]" level="INFO" category="resposta_para_soap" doc:name="log resposta para soap"/>
     </flow>
+    
     <flow name="flow_produto">
         <http:listener config-ref="soa_esb" path="/produto" allowedMethods="GET,POST" doc:name="SOAP"/>
         <cxf:simple-service configuration-ref="CXF_Configuration" namespace="http://localhost:8081/Produto" service="Produto" serviceClass="com.github.dsaouda.fiapesb.ws.ProdutoService" doc:name="CXF"/>
@@ -145,6 +152,7 @@ http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/
 }]]></dw:set-payload>
         </dw:transform-message>
     </flow>
+    
     <flow name="flow_checkout">
         <http:listener config-ref="soa_esb" path="/checkout" allowedMethods="GET,POST" doc:name="SOAP">
             <http:response-builder/>
@@ -170,32 +178,35 @@ http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/
 	class : "com.github.dsaouda.fiapesb.model.Checkout"
 }]]></dw:set-variable>
         </dw:transform-message>
-        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
-        <http:request config-ref="http_login_service_api" path="/v1/auth" method="POST" doc:name="rest efetuar login" metadata:id="be193789-ce68-4a3c-915f-f0bcd5e3cf11" doc:description="efetuando login">
-            <http:success-status-code-validator values="200"/>
-        </http:request>
-        <json:json-to-object-transformer returnClass="java.util.HashMap" encoding="UTF-8" mimeType="application/json" doc:name="json to hashmap" doc:description="Convertendo o JSON do retorno do login em um HashMap para conseguir trabalhar com vari&#225;veis e passar o par&#226;metro de CPF para a pr&#243;xima transforma&#231;&#227;o"/>
-        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
-        <http:request config-ref="http_cliente_service_api" path="/v1/cliente/{cpf}" method="GET" doc:name="rest info cliente" metadata:id="a357380c-2738-48b7-b980-8b151feb4411" doc:description="buscando informa&#231;&#245;es do cliente">
-            <http:request-builder>
-                <http:uri-param paramName="cpf" value="#[payload.cliente_cpf]"/>
-            </http:request-builder>
-            <http:success-status-code-validator values="200"/>
-        </http:request>
-        <json:json-to-object-transformer returnClass="java.util.HashMap" encoding="UTF-8" mimeType="application/json" doc:name="json to hashmap" doc:description="Convertendo o retorno JSON para HashMap para poder realizar manipula&#231;&#245;es"/>
-        <expression-component doc:name="atribuir cliente em var checkout" doc:description="Aqui estou atribuindo as informa&#231;&#245;es do retorno no rest cliente a vari&#225;vel checkout.cliente"><![CDATA[flowVars.checkout.cliente.setCpf(payload.cpf);
+        
+            <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+            <http:request config-ref="http_login_service_api" path="/v1/auth" method="POST" doc:name="rest efetuar login" doc:description="efetuando login" metadata:id="be193789-ce68-4a3c-915f-f0bcd5e3cf11">
+                <http:success-status-code-validator values="200"/>
+            </http:request>
+            <json:json-to-object-transformer returnClass="java.util.HashMap" encoding="UTF-8" mimeType="application/json" doc:name="json to hashmap" doc:description="Convertendo o JSON do retorno do login em um HashMap para conseguir trabalhar com vari&#225;veis e passar o par&#226;metro de CPF para a pr&#243;xima transforma&#231;&#227;o"/>
+            <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+            <http:request config-ref="http_cliente_service_api" path="/v1/cliente/{cpf}" method="GET" doc:name="rest info cliente" doc:description="buscando informa&#231;&#245;es do cliente" metadata:id="a357380c-2738-48b7-b980-8b151feb4411">
+                <http:request-builder>
+                    <http:uri-param paramName="cpf" value="#[payload.cliente_cpf]"/>
+                </http:request-builder>
+                <http:success-status-code-validator values="200"/>
+            </http:request>
+            <json:json-to-object-transformer returnClass="java.util.HashMap" encoding="UTF-8" mimeType="application/json" doc:name="json to hashmap" doc:description="Convertendo o retorno JSON para HashMap para poder realizar manipula&#231;&#245;es"/>
+            <expression-component doc:name="atribuir cliente em var checkout" doc:description="Aqui estou atribuindo as informa&#231;&#245;es do retorno no rest cliente a vari&#225;vel checkout.cliente"><![CDATA[flowVars.checkout.cliente.setCpf(payload.cpf);
 flowVars.checkout.cliente.setNome(payload.nome);
 flowVars.checkout.cliente.setId(payload.uuid);
 ]]></expression-component>
-        <logger message="#[flowVars]" level="INFO" doc:name="Logger"/>
-        <http:request config-ref="http_endereco_service_api" path="/v1/cep" method="GET" doc:name="rest info endereco" doc:description="buscando informa&#231;&#245;es complementares do endere&#231;o" metadata:id="2b2b203d-e160-47be-81f9-daaaaca68621">
-            <http:request-builder>
-                <http:query-param paramName="codigo" value="#[flowVars.checkout.endereco.getCep()]"/>
-            </http:request-builder>
-            <http:success-status-code-validator values="200"/>
-        </http:request>
-        <dw:transform-message doc:name="atribuir endereco em var checkout" doc:description="atribuindo endereco a variavel checkout" metadata:id="d509a903-ef6f-40e3-909f-96569cb6a6fb">
-            <dw:set-variable variableName="checkout"><![CDATA[%dw 1.0
+            <logger message="#[flowVars]" level="INFO" doc:name="Logger"/>
+        
+        
+            <http:request config-ref="http_endereco_service_api" path="/v1/cep" method="GET" doc:name="rest info endereco" doc:description="buscando informa&#231;&#245;es complementares do endere&#231;o" metadata:id="2b2b203d-e160-47be-81f9-daaaaca68621">
+                <http:request-builder>
+                    <http:query-param paramName="codigo" value="#[flowVars.checkout.endereco.getCep()]"/>
+                </http:request-builder>
+                <http:success-status-code-validator values="200"/>
+            </http:request>
+            <dw:transform-message doc:name="atribuir endereco em var checkout" doc:description="atribuindo endereco a variavel checkout" metadata:id="d509a903-ef6f-40e3-909f-96569cb6a6fb">
+                <dw:set-variable variableName="checkout"><![CDATA[%dw 1.0
 %output application/java
 ---
 {
@@ -224,16 +235,18 @@ flowVars.checkout.cliente.setId(payload.uuid);
 } as :object {
 	class : "com.github.dsaouda.fiapesb.model.Checkout"
 }]]></dw:set-variable>
-        </dw:transform-message>
-        <logger message="#[flowVars]" level="INFO" doc:name="Logger"/>
-        <http:request config-ref="http_produto_service_api" path="/v1/produto/{produto}" method="GET" doc:name="rest info produto" doc:description="buscando informa&#231;&#245;es do produto" metadata:id="5524a588-a8d4-4342-9b8d-214021e41335">
-            <http:request-builder>
-                <http:uri-param paramName="produto" value="#[flowVars.checkout.produto.id]"/>
-            </http:request-builder>
-            <http:success-status-code-validator values="200"/>
-        </http:request>
-        <dw:transform-message doc:name="atribuindo produto a var checkout" metadata:id="1a77a058-4c6d-4ef2-b3d7-541957144e01">
-            <dw:set-payload><![CDATA[%dw 1.0
+            </dw:transform-message>
+            <logger message="#[flowVars]" level="INFO" doc:name="Logger"/>
+        
+        
+            <http:request config-ref="http_produto_service_api" path="/v1/produto/{produto}" method="GET" doc:name="rest info produto" doc:description="buscando informa&#231;&#245;es do produto" metadata:id="5524a588-a8d4-4342-9b8d-214021e41335">
+                <http:request-builder>
+                    <http:uri-param paramName="produto" value="#[flowVars.checkout.produto.id]"/>
+                </http:request-builder>
+                <http:success-status-code-validator values="200"/>
+            </http:request>
+            <dw:transform-message doc:name="atribuindo produto a var checkout" metadata:id="1a77a058-4c6d-4ef2-b3d7-541957144e01">
+                <dw:set-payload><![CDATA[%dw 1.0
 %output application/json
 ---
 {
@@ -246,7 +259,7 @@ flowVars.checkout.cliente.setId(payload.uuid);
 	endereco_uf: flowVars.checkout.endereco.uf,
 	valor: payload.valor
 }]]></dw:set-payload>
-            <dw:set-variable variableName="checkout"><![CDATA[%dw 1.0
+                <dw:set-variable variableName="checkout"><![CDATA[%dw 1.0
 %output application/java
 ---
 {
@@ -275,22 +288,24 @@ flowVars.checkout.cliente.setId(payload.uuid);
 } as :object {
 	class : "com.github.dsaouda.fiapesb.model.Checkout"
 }]]></dw:set-variable>
-        </dw:transform-message>
-        <json:json-to-object-transformer returnClass="java.util.HashMap" encoding="UTF-8" mimeType="application/json" doc:name="json para hashmap" doc:description="Convertido para que o post seja enviado em  Content-Type:application/x-www-form-urlencoded
-
-fonte: https://docs.mulesoft.com/mule-user-guide/v/3.7/http-request-connector"/>
-        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
-        <http:request config-ref="http_checkout_service_api" path="/v1/checkout" method="POST" doc:name="rest checkout (boleto)" doc:description="finalizando a compra de um produto" metadata:id="6e422b2f-a4ad-4649-a541-015b16d886bf">
-            <http:request-builder>
-                <http:header headerName="Content-Type" value="application/x-www-form-urlencoded"/>
-            </http:request-builder>
-        </http:request>
-        <json:json-to-object-transformer returnClass="java.util.HashMap[]" encoding="UTF-8" mimeType="application/json" doc:name="JSON to Object"/>
-        <expression-component doc:name="Expression"><![CDATA[flowVars.checkout.setStatusCompra(payload[0].get("status"));
-flowVars.checkout.setUrlBoleto(payload[0].get("visualizar-boleto"));
-payload = flowVars.checkout;]]></expression-component>
-        <logger message="#[payload]" level="INFO" doc:name="log compra finalizada"/>
+            </dw:transform-message>
+            <json:json-to-object-transformer returnClass="java.util.HashMap" encoding="UTF-8" mimeType="application/json" doc:name="json para hashmap" doc:description="Convertido para que o post seja enviado em  Content-Type:application/x-www-form-urlencoded  fonte: https://docs.mulesoft.com/mule-user-guide/v/3.7/http-request-connector"/>
+            <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+        
+        
+            <http:request config-ref="http_checkout_service_api" path="/v1/checkout" method="POST" doc:name="rest checkout (boleto)" doc:description="finalizando a compra de um produto" metadata:id="6e422b2f-a4ad-4649-a541-015b16d886bf">
+                <http:request-builder>
+                    <http:header headerName="Content-Type" value="application/x-www-form-urlencoded"/>
+                </http:request-builder>
+            </http:request>
+            <json:json-to-object-transformer returnClass="java.util.HashMap[]" encoding="UTF-8" mimeType="application/json" doc:name="JSON to Object"/>
+            <expression-component doc:name="Expression"><![CDATA[flowVars.checkout.setStatusCompra(payload[0].get("status"));
+	flowVars.checkout.setUrlBoleto(payload[0].get("visualizar-boleto"));
+	payload = flowVars.checkout;]]></expression-component>
+            <logger message="#[payload]" level="INFO" doc:name="log compra finalizada"/>
+        
 
     </flow>
+
     
 </mule>

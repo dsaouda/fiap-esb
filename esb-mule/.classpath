@@ -10,5 +10,7 @@
 	<classpathentry kind="src" path="src/main/api"/>
 	<classpathentry kind="src" path="src/main/wsdl"/>
 	<classpathentry kind="src" path="src/test/munit"/>
+	<classpathentry kind="con" path="MULE_LIB/Amazon S3/org.mule.tooling.ui.contribution.s3.3.5.0"/>
+	<classpathentry kind="con" path="MULE_LIB/APIkit SOAP/org.mule.tooling.soapkit.contribution"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
