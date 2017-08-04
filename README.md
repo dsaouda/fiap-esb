@@ -2,8 +2,9 @@
 
 Projeto ESB (Fluxo simples de um ecommerce)
 
-- [x] esb-endereco-api 	=> https://github.com/dsaouda/fiap-esb/tree/master/esb-endereco-api
-- [x] esb-cliente-api	=> https://github.com/dsaouda/fiap-esb/tree/master/esb-cliente-api
-- [x] esb-produto-api 	=> https://github.com/dsaouda/fiap-esb/tree/master/esb-produto-api
-- [x] esb-login-api		=> https://github.com/dsaouda/fiap-esb/tree/master/esb-login-api
-- [x] esb-checkout-api	=> https://github.com/dsaouda/fiap-esb/tree/master/esb-checkout-api
+- [x] endereco-api 	=> https://github.com/dsaouda/fiap-esb/tree/master/endereco-api
+- [x] cliente-api	=> https://github.com/dsaouda/fiap-esb/tree/master/cliente-api
+- [x] produto-api 	=> https://github.com/dsaouda/fiap-esb/tree/master/produto-api
+- [x] login-api		=> https://github.com/dsaouda/fiap-esb/tree/master/login-api
+- [x] checkout-api	=> https://github.com/dsaouda/fiap-esb/tree/master/checkout-api
+- [x] esb-mule	=> https://github.com/dsaouda/fiap-esb/tree/master/esb-mule
