@@ -1,0 +1,13 @@
+{
+    "inputMessageMetadata": {},
+    "outputMessageMetadata": {
+        "flowVariables": {
+            "checkout": {
+                "connectorName": "#_custom_mule_metadata_type_#",
+                "typeId": "model-checkout"
+            }
+        }
+    },
+    "id": "d509a903-ef6f-40e3-909f-96569cb6a6fb",
+    "version": "5.2.0.0"
+}

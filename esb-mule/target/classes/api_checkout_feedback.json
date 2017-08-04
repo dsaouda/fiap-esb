@@ -1,0 +1,15 @@
+{
+    "title": "CheckoutFeedback",
+    "type": "array",
+    "items": {
+    	"type": "object",
+    	"properties": {
+ 			"status": {
+            	"type": "string"
+	        },
+	        "visualizar-boleto": {
+	           	"type": "string"
+	        }
+    	}
+    }
+}

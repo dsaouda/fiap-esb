@@ -1,0 +1,11 @@
+{
+    "inputMessageMetadata": {},
+    "outputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "resource-checkout-feedback"
+        }
+    },
+    "id": "6e422b2f-a4ad-4649-a541-015b16d886bf",
+    "version": "5.2.0.0"
+}

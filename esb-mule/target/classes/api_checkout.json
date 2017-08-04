@@ -1,0 +1,30 @@
+{
+    "title": "Checkout",
+    "type": "object",
+    "properties": {
+        "valor": {
+            "type": "number"
+        },
+        "cliente_nome": {
+            "type": "string"
+        },
+        "cliente_documento": {            
+            "type": "string"
+        },
+        "endereco_logradouro": {            
+            "type": "string"
+        },
+        "endereco_bairro": {            
+            "type": "string"
+        },
+        "endereco_cep": {            
+            "type": "string"
+        },
+        "endereco_cidade": {            
+            "type": "string"
+        },
+        "endereco_uf": {            
+            "type": "string"
+        }
+    }    
+}

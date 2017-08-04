@@ -1,0 +1,17 @@
+{
+    "inputMessageMetadata": {},
+    "outputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "resource-checkout"
+        },
+        "flowVariables": {
+            "checkout": {
+                "connectorName": "#_custom_mule_metadata_type_#",
+                "typeId": "model-checkout"
+            }
+        }
+    },
+    "id": "1a77a058-4c6d-4ef2-b3d7-541957144e01",
+    "version": "5.2.0.0"
+}

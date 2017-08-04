@@ -1,0 +1,11 @@
+{
+    "inputMessageMetadata": {},
+    "outputMessageMetadata": {
+        "messagePayload": {
+            "connectorName": "#_custom_mule_metadata_type_#",
+            "typeId": "resource-endereco"
+        }
+    },
+    "id": "2b2b203d-e160-47be-81f9-daaaaca68621",
+    "version": "5.2.0.0"
+}
