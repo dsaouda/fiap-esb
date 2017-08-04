@@ -1,29 +1,309 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:chec="http://localhost:8081/checkout" xmlns:mod="http://model.fiapesb.dsaouda.github.com">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <chec:comprar>
-         
-         <chec:arg0>
-         
-            <mod:cliente>
-                              
-               <mod:login>adm@fiap.com.br</mod:login>
-               <mod:senha>123</mod:senha>
-            </mod:cliente>
+<con:soapui-project id="b6f3feae-c1c8-4f67-9f63-e0218b37d598" activeEnvironment="Default" name="fiap-esb" resourceRoot="" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="54c21161-b121-47ef-9534-24f6ef5ae219" wsaVersion="NONE" name="ClienteSoapBinding" type="wsdl" bindingName="{http://localhost:8081/Cliente}ClienteSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8081/cliente?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8081/cliente?wsdl"><con:part><con:url>http://localhost:8081/cliente?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="Cliente" targetNamespace="http://localhost:8081/Cliente" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost:8081/Cliente" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://model.fiapesb.dsaouda.github.com" xmlns:tns="http://model.fiapesb.dsaouda.github.com">
+      <xsd:complexType name="Cliente">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="cpf" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="id" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="login" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="loginId" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="nome" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="senha" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://localhost:8081/Cliente" xmlns:ns0="http://model.fiapesb.dsaouda.github.com">
+      <xsd:import namespace="http://model.fiapesb.dsaouda.github.com"/>
+      <xsd:element name="cadastrar" type="tns:cadastrar"/>
+      <xsd:complexType name="cadastrar">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="arg0" type="ns0:Cliente"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="cadastrarResponse" type="tns:cadastrarResponse"/>
+      <xsd:complexType name="cadastrarResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="return" type="ns0:Cliente"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="cadastrar">
+    <wsdl:part element="tns:cadastrar" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cadastrarResponse">
+    <wsdl:part element="tns:cadastrarResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ClienteServicePortType">
+    <wsdl:operation name="cadastrar">
+      <wsdl:input message="tns:cadastrar" name="cadastrar"></wsdl:input>
+      <wsdl:output message="tns:cadastrarResponse" name="cadastrarResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ClienteSoapBinding" type="tns:ClienteServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="cadastrar">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="cadastrar">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cadastrarResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Cliente">
+    <wsdl:port binding="tns:ClienteSoapBinding" name="ClienteServicePort">
+      <soap:address location="http://localhost:8081/cliente"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8081/cliente</con:endpoint></con:endpoints><con:operation id="6f2006e9-a693-4834-82de-7e6729c334ec" isOneWay="false" action="" name="cadastrar" bindingOperationName="cadastrar" type="Request-Response" outputName="cadastrarResponse" inputName="cadastrar" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ad8a36ed-9161-4ffe-875e-6185d1bc0d41" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/cliente</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cli="http://localhost:8081/Cliente" xmlns:mod="http://model.fiapesb.dsaouda.github.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cli:cadastrar>\r         
+         <cli:arg0>\r            
+            <mod:cpf>58420375306</mod:cpf>\r            
+            <mod:nome>Adm Fiap</mod:nome>            
+            <mod:login>adm@fiap.com.br</mod:login>\r                        
+            <mod:senha>123</mod:senha>\r
+         </cli:arg0>\r
+      </cli:cadastrar>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://localhost:8081/Cliente/ClienteServicePortType/cadastrar"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="fea1c1e2-bd1c-4bba-8187-2c3e116c1fcb" wsaVersion="NONE" name="EnderecoServiceSoapBinding" type="wsdl" bindingName="{http://ws.fiapesb.dsaouda.github.com/}EnderecoServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8081/endereco?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8081/endereco?wsdl"><con:part><con:url>http://localhost:8081/endereco?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="EnderecoService" targetNamespace="http://ws.fiapesb.dsaouda.github.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.fiapesb.dsaouda.github.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://model.fiapesb.dsaouda.github.com" xmlns:tns="http://model.fiapesb.dsaouda.github.com">
+      <xsd:complexType name="Endereco">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="bairro" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="cep" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="cidade" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="endereco" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="uf" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ws.fiapesb.dsaouda.github.com/" xmlns:ns0="http://model.fiapesb.dsaouda.github.com">
+      <xsd:import namespace="http://model.fiapesb.dsaouda.github.com"/>
+      <xsd:element name="consultar" type="tns:consultar"/>
+      <xsd:complexType name="consultar">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="arg0" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="consultarResponse" type="tns:consultarResponse"/>
+      <xsd:complexType name="consultarResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="return" type="ns0:Endereco"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="consultar">
+    <wsdl:part element="tns:consultar" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarResponse">
+    <wsdl:part element="tns:consultarResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EnderecoServicePortType">
+    <wsdl:operation name="consultar">
+      <wsdl:input message="tns:consultar" name="consultar"></wsdl:input>
+      <wsdl:output message="tns:consultarResponse" name="consultarResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EnderecoServiceSoapBinding" type="tns:EnderecoServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="consultar">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="consultar">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultarResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EnderecoService">
+    <wsdl:port binding="tns:EnderecoServiceSoapBinding" name="EnderecoServicePort">
+      <soap:address location="http://localhost:8081/endereco"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8081/endereco</con:endpoint></con:endpoints><con:operation id="8a84433e-f235-440b-8e31-af977c5a175d" isOneWay="false" action="" name="consultar" bindingOperationName="consultar" type="Request-Response" outputName="consultarResponse" inputName="consultar" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="38f87048-5e80-4d23-b8a9-46e07ef71e23" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/endereco</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.fiapesb.dsaouda.github.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ws:consultar>\r         
+         <ws:arg0>01538-001</ws:arg0>\r
+      </ws:consultar>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws.fiapesb.dsaouda.github.com/EnderecoServicePortType/consultar"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="b6af3fe1-f638-4210-bc36-9a5c4a585806" wsaVersion="NONE" name="ProdutoSoapBinding" type="wsdl" bindingName="{http://localhost:8081/Produto}ProdutoSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8081/produto?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8081/produto?wsdl"><con:part><con:url>http://localhost:8081/produto?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="Produto" targetNamespace="http://localhost:8081/Produto" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost:8081/Produto" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://model.fiapesb.dsaouda.github.com" xmlns:tns="http://model.fiapesb.dsaouda.github.com">
+      <xsd:complexType name="Produto">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="descricao" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="foto" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="id" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="nome" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="valor" type="xsd:float"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://localhost:8081/Produto" xmlns:ns0="http://model.fiapesb.dsaouda.github.com">
+      <xsd:import namespace="http://model.fiapesb.dsaouda.github.com"/>
+      <xsd:element name="consultar" type="tns:consultar"/>
+      <xsd:complexType name="consultar">
+        <xsd:sequence>
+          <xsd:element name="arg0" type="xsd:long"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="consultarResponse" type="tns:consultarResponse"/>
+      <xsd:complexType name="consultarResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="return" type="ns0:Produto"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="consultarResponse">
+    <wsdl:part element="tns:consultarResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultar">
+    <wsdl:part element="tns:consultar" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ProdutoServicePortType">
+    <wsdl:operation name="consultar">
+      <wsdl:input message="tns:consultar" name="consultar"></wsdl:input>
+      <wsdl:output message="tns:consultarResponse" name="consultarResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProdutoSoapBinding" type="tns:ProdutoServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="consultar">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="consultar">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultarResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Produto">
+    <wsdl:port binding="tns:ProdutoSoapBinding" name="ProdutoServicePort">
+      <soap:address location="http://localhost:8081/produto"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8081/produto</con:endpoint></con:endpoints><con:operation id="ce20ab4c-883b-4d1f-8430-5bca83753560" isOneWay="false" action="" name="consultar" bindingOperationName="consultar" type="Request-Response" outputName="consultarResponse" inputName="consultar" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0e22273c-746f-481b-acbd-78517c4a5d4d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/produto</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://localhost:8081/Produto">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <prod:consultar>\r
+         <prod:arg0>129359532</prod:arg0>\r
+      </prod:consultar>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://localhost:8081/Produto/ProdutoServicePortType/consultar"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="c4e596b5-1c7e-4667-8953-1e725361aeaa" wsaVersion="NONE" name="checkoutSoapBinding" type="wsdl" bindingName="{http://localhost:8081/checkout}checkoutSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8081/checkout?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8081/checkout?wsdl"><con:part><con:url>http://localhost:8081/checkout?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="checkout" targetNamespace="http://localhost:8081/checkout" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost:8081/checkout" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://model.fiapesb.dsaouda.github.com" xmlns:tns="http://model.fiapesb.dsaouda.github.com">
+      <xsd:complexType name="Produto">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="descricao" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="foto" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="id" type="xsd:long"/>
+          <xsd:element minOccurs="0" name="nome" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="valor" type="xsd:float"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Checkout">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="cliente" nillable="true" type="tns:Cliente"/>
+          <xsd:element minOccurs="0" name="endereco" nillable="true" type="tns:Endereco"/>
+          <xsd:element minOccurs="0" name="produto" nillable="true" type="tns:Produto"/>
+          <xsd:element minOccurs="0" name="statusCompra" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="urlBoleto" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Cliente">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="cpf" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="id" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="login" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="loginId" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="nome" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="senha" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Endereco">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="bairro" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="cep" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="cidade" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="endereco" nillable="true" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="uf" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://localhost:8081/checkout" xmlns:ns0="http://model.fiapesb.dsaouda.github.com">
+      <xsd:import namespace="http://model.fiapesb.dsaouda.github.com"/>
+      <xsd:element name="comprar" type="tns:comprar"/>
+      <xsd:complexType name="comprar">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="arg0" type="ns0:Checkout"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="comprarResponse" type="tns:comprarResponse"/>
+      <xsd:complexType name="comprarResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="return" type="ns0:Checkout"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="comprarResponse">
+    <wsdl:part element="tns:comprarResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="comprar">
+    <wsdl:part element="tns:comprar" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CheckoutServicePortType">
+    <wsdl:operation name="comprar">
+      <wsdl:input message="tns:comprar" name="comprar"></wsdl:input>
+      <wsdl:output message="tns:comprarResponse" name="comprarResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="checkoutSoapBinding" type="tns:CheckoutServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="comprar">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="comprar">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="comprarResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="checkout">
+    <wsdl:port binding="tns:checkoutSoapBinding" name="CheckoutServicePort">
+      <soap:address location="http://localhost:8081/checkout"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8081/checkout</con:endpoint></con:endpoints><con:operation id="2c2ecbee-7a95-4c97-abbd-da14f7b77849" isOneWay="false" action="" name="comprar" bindingOperationName="comprar" type="Request-Response" outputName="comprarResponse" inputName="comprar" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9f336771-f410-4b24-9bb0-b9118d64c75d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/checkout</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:chec="http://localhost:8081/checkout" xmlns:mod="http://model.fiapesb.dsaouda.github.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <chec:comprar>\r         
+         <chec:arg0>\r         
+            <mod:cliente>\r                              
+               <mod:login>adm@fiap.com.br</mod:login>\r
+               <mod:senha>123</mod:senha>\r
+            </mod:cliente>\r
             
-            <mod:endereco>
-                              
-               <mod:cep>01538-001</mod:cep>
-            </mod:endereco>
+            <mod:endereco>\r                              
+               <mod:cep>01538-001</mod:cep>\r
+            </mod:endereco>\r
             
-            <mod:produto>
-               
-               <mod:id>129359532</mod:id>
-               
-            </mod:produto>
-            
-         </chec:arg0>
-      </chec:comprar>
-   </soapenv:Body>
-</soapenv:Envelope>
+            <mod:produto>\r               
+               <mod:id>129359532</mod:id>\r               
+            </mod:produto>\r            
+         </chec:arg0>\r
+      </chec:comprar>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://localhost:8081/checkout/CheckoutServicePortType/comprar"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
